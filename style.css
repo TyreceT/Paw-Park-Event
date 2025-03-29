@@ -5,6 +5,21 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Momentz';
+    src: url('fonts/Momentz.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Easter';
+    src: url('fonts/Easter.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kids';
+    src: url('Fonts/Kids.ttf') format('truetype');
+}
+
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
@@ -157,45 +172,38 @@ nav a:hover::after {
 /* HERO SECTION */
 .hero {
     position: relative;
+    background: transparent;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Prevents overlapping */
+    padding: 0 10%;
 }
 
-/* Background Image */
-.hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #00000000;
-    /* background: url("Visuals/Easter-Background.png") no-repeat center center/cover; */
-    z-index: -1;
-}
-
-/* Hero Content */
+/* Hero Content Wrapper */
 .hero-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
 }
 
 /* Dog Image */
 .hero-dog img {
-    width: 750px;
-    margin-top: 10%;
+    width: 130%; /* Increase size */
+    max-width: 1200px;
     height: auto;
     animation: float 3s ease-in-out infinite;
-}
+    margin-top: 100px;
+    margin-left: -230px; /* Adjust to move left */}
+
 
 .hero-dog {
-    position: relative;
-    left: -30%; /* Move further left */
-   
+    flex: 1; /* Takes up left space */
+    display: flex;
+    justify-content: flex-start;
 }
 
 /* Floating Animation */
@@ -207,67 +215,83 @@ nav a:hover::after {
 
 /* Event Details */
 .hero-text {
-    padding: 0px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 100%;
+    flex: 1.5; /* Takes up right space */
+    text-align: left; /* Aligns text to the left */
+    max-width: 50%;
+    
+    
 }
 
 .hero-text h1 {
-    font-size: 6rem;
-    margin-left: -50%;
-    color: #000000;
+    font-size: 8rem;
+    font-family: 'Easter', sans-serif;
+    color: #1aacd8;
+    margin-top: -10%;
+    margin-bottom: -5%;
+    margin-left: -15%;
+    text-shadow: 4px 4px 10px rgba(0, 152, 179, 0.37); 
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Prevents overflow */
+    overflow: visible;
 }
 
 .hero-text h2 {
-    font-size: 4rem;
-    margin-left: -50%;
-    color: #000000;
+    font-family: 'Momentz', sans-serif;
+    white-space: nowrap; /* Prevents text wrapping */
+    margin-left: -15%;
+    font-size: 4.3rem;
+    color: #ff79a6;
+}
+
+.hero-text h3 {
+    font-family: 'Kids', sans-serif;
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: visible;
+    font-size: 2rem;
+    margin-left: -3%;
+    margin-top: 3%;
+    color: #b986fc;
 }
 
 .hero-text p {
     font-size: 1.2rem;
-    color: #c29a9a;
+    color: #555;
+    line-height: 1.6;
 }
 
-/* Mobile Adjustments */
+/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-    .hero-content {
+    .hero {
+        height: auto;
         flex-direction: column;
         text-align: center;
+        padding: 50px 5%;
     }
 
-    /* .hero-dog img {
-        width: 600px;
-        position: absolute;
-    } */
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-dog {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
 
     .hero-text {
         max-width: 90%;
-    }
-}
-
-/* Change Background to a Longer Image for Smaller Screens */
-@media (max-width: 768px) {
-    .hero-image {
-        /* background-image: url("Visuals/Easter-Background-Long.png"); */
-        min-height: 700px; /* Increase height if needed */
-        background-size: contain;
-
-    }
-    .hero-dog img {
-        width: 300px;
         text-align: center;
     }
-}
 
-@media (max-width: 480px) {
-    .hero-image {
-        /* background-image: url("Visuals/Easter-Background-Long.png");  */
-        min-height: 800px; /* Ensure enough height */
-        background-size: cover;
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-text h2 {
+        font-size: 2rem;
     }
 }
+
 
 
 
@@ -355,8 +379,8 @@ footer {
 .about-section {
     padding: 60px 0px;
     background: #ffffffc9;
-    
     text-align: center;
+    
 
 }
 
@@ -364,6 +388,7 @@ footer {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #333;
+    
 }
 
 .about-content {
@@ -944,6 +969,7 @@ input[type="radio"] {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     transition: transform 0.3s ease-in-out;
+    
 }
 
 .schedule-item:hover {
@@ -961,9 +987,11 @@ input[type="radio"] {
 
 .schedule-item .time {
     font-weight: bold;
-    color: #ff8c00;
+    color: #ec8303;
     font-size: 1.2rem;
+    margin-top: 3%;
     display: block;
+    display: flex;
 }
 
 .schedule-item p {
