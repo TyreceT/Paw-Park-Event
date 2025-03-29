@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paw Park | Bark & Hunt</title>
+    <link rel="icon" type="image/png" href="Visuals/Logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+
+<script>
+    function countdown() {
+        const eventDate = new Date("April 20, 2025 09:00:00").getTime();
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+
+            if (diff <= 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h3>🐾 The event is happening now!</h3>";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, "0");
+            document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+        }, 1000);
+    }
+
+    countdown();
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    let currentIndex = 1; // Start from the first image
+    const totalItems = 12; // Number of images
+    const intervalTime = 6000; // Auto-scroll every 6 seconds
+    let autoScroll;
+    let userInteracted = false; // Flag to track user interaction
+
+    // Function to move to the next slide
+    function nextSlide() {
+        currentIndex = (currentIndex % totalItems) + 1;
+        document.getElementById(`pos${currentIndex}`).checked = true;
+    }
+
+    // Function to move to the previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 2 + totalItems) % totalItems + 1;
+        document.getElementById(`pos${currentIndex}`).checked = true;
+    }
+
+    // Start auto-scroll (Ensures only ONE interval is running)
+    function startAutoScroll() {
+        clearInterval(autoScroll); // Clear any existing interval before starting a new one
+        autoScroll = setInterval(nextSlide, intervalTime);
+    }
+
+    // Stop auto-scroll when user interacts and restart after 8 seconds
+    function stopAutoScroll() {
+        clearInterval(autoScroll);
+        userInteracted = true; // Mark user interaction
+
+        setTimeout(() => {
+            userInteracted = false; // Reset interaction flag
+            startAutoScroll(); // Resume auto-scroll after 8 seconds
+        }, 3000); // Correct delay time
+    }
+
+    // Attach event listeners to navigation buttons
+    document.querySelector(".prev-btn").addEventListener("click", function () {
+        prevSlide();
+        stopAutoScroll();
+    });
+
+    document.querySelector(".next-btn").addEventListener("click", function () {
+        nextSlide();
+        stopAutoScroll();
+    });
+
+    // Attach event listeners to radio buttons (manual navigation)
+    document.querySelectorAll("input[name='position']").forEach((radio) => {
+        radio.addEventListener("change", stopAutoScroll);
+    });
+
+    // Start auto-scroll initially
+    startAutoScroll();
+});
+
+
+
+
+
+
+</script>
+
+
+<body>
+
+    <!-- HEADER - NAVIGATION BAR -->
+    <header>
+        <div class="logo-container">
+            <a href="#" onclick="resetPage()">
+                <img src="Visuals/Logo.png" alt="Paw Park Logo">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu Toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-checkbox">
+        <label for="nav-toggle" class="nav-burger">&#9776;</label>
+
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#speakers">SPEAKERS</a></li>
+                <li><a href="#venue">VENUE</a></li>
+                <li><a href="#schedule">SCHEDULE</a></li>
+                <li><a href="#registration">REGISTER</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-image"></div> <!-- Background Image -->
+        <div class="hero-content">
+            <div class="hero-dog">
+                <img src="Visuals/Easter-Dog.png" alt="Cute Dog">
+            </div>
+            <div class="hero-text">
+                <h1>Bark & Hunt</h1>
+                <h2>A Pawsome Easter Hunt</h1>
+                <p>"Sniff, sneek, and celebrate! The ultimate doggy egg hunt!" <br>
+                📅 Date: April 20, 2025 <br>
+                📍 Location: Paw Park, Greenfield City <br>
+                🎉 Activities: Egg Hunt, Games, and Prizes!</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+    <h2>🐶 About the Event</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <h3>What is Paw Park's Bark & Hunt?</h3>
+            <p>The Paw Park Bark & Hunt is an exciting Easter celebration designed for pet lovers and their furry friends. This event features an interactive Easter Egg Hunt, engaging activities, pet-friendly booths, and expert talks on pet care. The event aims to create a bonding experience for pets and owners in a festive outdoor setting.</p><br>
+
+            <h3>🎯 Target Audience</h3>
+            <ul>
+                <li>🐾 Pet owners and animal lovers</li>
+                <li>👨‍👩‍👧‍👦 Families looking for a unique Easter celebration</li>
+                <li>🐕 Dog trainers and pet enthusiasts</li>
+                <li>🛍️ Pet product businesses and vendors</li>
+                <li>🎉 Anyone who loves fun, games, and adorable pets!</li>
+            </ul>
+        </div>
+
+        <div class="about-image">
+            <img src="Visuals/Egg-Hunt.png" alt="Dogs Playing">
+        </div>
+    </div>
+
+    <h3>🌟 Why Attend?</h3><br>
+    <div class="features-grid">
+        <div class="feature">
+            <img src="Visuals/Egg.png" alt="Easter Egg">
+            <p>🥚 Easter Egg Hunt for Dogs & Humans – Special pet-friendly treats hidden in colorful Easter eggs around the park!</p>
+        </div>
+        <div class="feature">
+            <img src="Visuals/Trophy.png" alt="Trophy">
+            <p>🏆 Exciting Games & Contests – Dog costume contest, fastest tail wag, and best trick challenge!</p>
+        </div>
+        <div class="feature">
+            <img src="Visuals/Treats.png" alt="Gift">
+            <p>🎁 Free Treats & Prizes – Special giveaways for the most active participants.</p>
+        </div>
+        <div class="feature">
+            <img src="Visuals/Doctor-Dog.png" alt="Trainer">
+            <p>🐕 Meet & Greet with Pet Experts – Learn from professional dog trainers and veterinarians.</p>
+        </div>
+        <div class="feature">
+            <img src="Visuals/Photo.png" alt="Camera">
+            <p>📷 Photo Booth & Social Media Contest – Get featured on Paw Park’s official page!</p>
+        </div>
+        <div class="feature">
+            <img src="Visuals/Shop.png" alt="Pet Shop">
+            <p>🛍️ Pet Product Stalls – Shop for the best treats, accessories, and pet essentials.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SPEAKERS SECTION -->
+<section id="speakers" class="speakers-section">
+    <h2>🎤 Meet Our Guest Experts</h2>
+    <p>Learn from top pet care professionals and trainers who will share their expertise on keeping your furry friends happy, healthy, and well-trained.</p>
+
+    <div class="speakers-grid">
+        <!-- Speaker 1 -->
+        <div class="speaker-card">
+            <img src="Visuals/Unson.png" alt="Dr. Amanda Reyes">
+            <div class="speaker-info">
+                <h3>Dr. Edgardo Unson, DVM</h3>
+                <p>Veterinarian & Owner of<br>Animal House Veterinary Clinic</p>
+                <span>📷 Discussion: "Keeping Your Pet Healthy & Happy"</span>
+                <p>Expert advice on pet health, nutrition, and wellness to ensure a long and happy life for your furry friends.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AnimalHousePH" class="bi bi-facebook" target="_blank" rel="noopener noreferrer"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speaker 2 -->
+        <div class="speaker-card">
+            <img src="Visuals/Cleofas.png" alt="Jake Mendoza">
+            <div class="speaker-info">
+                <h3>Francis Roel Cleofas</h3>
+                <p>"Dog Coach Francis"<br>Premier Dog Behavior Consultant</p>
+                <span>🎤 Seminar: "Training Tips for Every Dog Owner"</span>
+                <p>Live demonstration on force-free training techniques and how to build a positive relationship with your dog.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/DogCoachFrancis" class="bi bi-facebook" target="_blank" rel="noopener noreferrer"></a>
+                    <a href="https://www.instagram.com/dogcoachfrancis?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="bi bi-instagram" target="_blank" rel="noopener noreferrer"></a>
+                    <a href="https://www.linkedin.com/in/francis-roel-cleofas-18855329/?originalSubdomain=ph" class="bi bi-linkedin" target="_blank" rel="noopener noreferrer"></a>
+
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Speaker 3 -->
+        <div class="speaker-card">
+            <img src="Visuals/Zapanta.png" alt="Lara Cruz">
+            <div class="speaker-info">
+                <h3>Lestre Zapanta</h3>
+                <p>"The Pinoy Dog Whisperer"<br>Canine Behavior Expert</p>
+                <span>🐾 Talk: "Understanding Your Dog’s Behavior"</span>
+                <p>Insights into canine psychology, how to communicate with your dog, and ways to correct behavioral issues effectively.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/lestrezapanta" class="bi bi-facebook" target="_blank" rel="noopener noreferrer"></a>
+                    <a href="https://www.instagram.com/thepinoydogwhisperer/?hl=en" class="bi bi-instagram" target="_blank" rel="noopener noreferrer"></a>
+                    <a href="https://www.lestrezapanta.com/" class="bi bi-globe" target="_blank" rel="noopener noreferrer"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VENUE SECTION -->
+<section id="venue" class="venue-section">
+    <h2>📍 Venue: SM Mall of Asia - Sky Paw Park</h2>
+    
+    <div class="venue-content">
+        <!-- Venue Text -->
+        <div class="venue-text">
+            <h3>🐾 What’s in Paw Park?</h3>
+            <p>
+                Experience an exciting day at one of the most pet-friendly locations in the city,
+                designed to provide fun and comfort for both pets and owners.
+            </p><br>
+
+            <h3>🌟 Venue Highlights</h3>
+            <ul>
+                <li>🐕 Dedicated play zones for small and large dogs</li>
+                <li>🐕‍🦺 Poop & Pee Zone and Off-Leash Zone</li>
+                <li>💧 Hydration stations and pet-friendly snack booths</li>
+                <li>🩺 On-site veterinarians for pet check-ups</li>
+                <li>🥚 Exciting Easter Egg Hunt for dogs and families</li>
+                <li>🪑 Comfortable seating for families and attendees</li>
+            </ul>
+        </div>
+
+        <!-- Venue Image (Google Map) -->
+        <div class="venue-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1188.0604762020903!2d120.97916413907852!3d14.534014783446588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cb56c9f37527%3A0x73d8e608efb7012a!2sMOA%20Sky!5e1!3m2!1sen!2sph!4v1743225998476!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+<!-- 3D Card Carousel -->
+<div class="carousel-wrapper">
+    <!-- Navigation Dots (Radio Buttons) -->
+    <input type="radio" name="position" id="pos1" checked />
+    <input type="radio" name="position" id="pos2" />
+    <input type="radio" name="position" id="pos3" />
+    <input type="radio" name="position" id="pos4" />
+    <input type="radio" name="position" id="pos5" />
+    <input type="radio" name="position" id="pos6" />
+    <input type="radio" name="position" id="pos7" />
+    <input type="radio" name="position" id="pos8" />
+    <input type="radio" name="position" id="pos9" />
+    <input type="radio" name="position" id="pos10" />
+    <input type="radio" name="position" id="pos11" />
+    <input type="radio" name="position" id="pos12" />
+
+    <!-- Carousel -->
+    <main id="carousel">
+        <div class="item"><img src="Visuals/Venue12.jpg" alt="Image 1"></div>
+        <div class="item"><img src="Visuals/Venue1.jpg" alt="Image 2"></div>
+        <div class="item"><img src="Visuals/Venue2.jpg" alt="Image 3"></div>
+        <div class="item"><img src="Visuals/Venue3.jpg" alt="Image 4"></div>
+        <div class="item"><img src="Visuals/Venue4.jpg" alt="Image 5"></div>
+        <div class="item"><img src="Visuals/Venue9.jpg" alt="Image 6"></div>
+        <div class="item"><img src="Visuals/Venue10.jpg" alt="Image 7"></div>
+        <div class="item"><img src="Visuals/Venue11.jpg" alt="Image 8"></div>
+        <div class="item"><img src="Visuals/Venue5.jpg" alt="Image 9"></div>
+        <div class="item"><img src="Visuals/Venue6.jpg" alt="Image 10"></div>
+        <div class="item"><img src="Visuals/Venue7.jpg" alt="Image 11"></div>
+        <div class="item"><img src="Visuals/Venue8.jpg" alt="Image 12"></div>
+    </main>
+
+    <!-- Left & Right Navigation Buttons -->
+    <button class="carousel-btn prev-btn">&#10094;</button>
+    <button class="carousel-btn next-btn">&#10095;</button>
+
+    <!-- Navigation Dots -->
+    <div class="carousel-navigation">
+        <label for="pos1"></label>
+        <label for="pos2"></label>
+        <label for="pos3"></label>
+        <label for="pos4"></label>
+        <label for="pos5"></label>
+        <label for="pos6"></label>
+        <label for="pos7"></label>
+        <label for="pos8"></label>
+        <label for="pos9"></label>
+        <label for="pos10"></label>
+        <label for="pos11"></label>
+        <label for="pos12"></label>
+    </div>
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- SCHEDULE SECTION -->
+<section id="schedule" class="schedule-section">
+    <h2>📅 Event Schedule</h2>
+    <p>A day of fun activities, contests, and expert talks for pets and owners.</p>
+
+    <!-- Countdown Timer -->
+    <div id="countdown">
+        <h3>🐶 Time Until the Event:</h3><br>
+        <div class="countdown-timer">
+            <span id="days">00</span> Days
+            <span id="hours">00</span> Hours
+            <span id="minutes">00</span> Minutes
+            <span id="seconds">00</span> Seconds
+        </div>
+    </div>
+
+    <div class="schedule-container">
+        <div class="schedule-list">
+            <div class="schedule-item">
+                <span class="time">9:00 AM</span>
+                <h3>Registration Opens</h3>
+                <p>Check-in at the Welcome Booth and receive event materials.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">10:00 AM</span>
+                <h3>Opening Ceremony</h3>
+                <p>Kickoff with a welcome speech and event overview.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">10:30 AM</span>
+                <h3>Easter Egg Hunt</h3>
+                <p>Exciting hunt for hidden treats in separate play zones for small and large dogs.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">11:30 AM</span>
+                <h3>Fun Games & Contests</h3>
+                <p>Participate in contests like fastest tail wag, best dressed dog, and best trick.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">12:30 PM</span>
+                <h3>Lunch & Social Hour</h3>
+                <p>Enjoy refreshments and explore pet product booths.</p>
+            </div>
+            <div class="schedule-item bonus">
+                <span class="time">1:30 PM</span>
+                <h3>Paw Parade</h3>
+                <p>Dress up your pets and join the parade around the venue.</p>
+            </div>
+
+            <!-- Speaker Sessions -->
+            <div class="schedule-item">
+                <span class="time">2:00 PM</span>
+                <h3>Guest Speaker: Dr. Edgardo Unson, DVM</h3>
+                <p>Discussion on pet health, wellness, and proper nutrition.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">2:30 PM</span>
+                <h3>Guest Speaker: Dog Coach Francis</h3>
+                <p>Live training session on positive reinforcement techniques.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">3:00 PM</span>
+                <h3>Guest Speaker: The Pinoy Dog Whisperer</h3>
+                <p>Insights on understanding dog behavior and improving communication.</p>
+            </div>
+
+            <div class="schedule-item">
+                <span class="time">3:30 PM</span>
+                <h3>Awarding Ceremony</h3>
+                <p>Winners of contests and raffle prizes announced.</p>
+            </div>
+            <div class="schedule-item">
+                <span class="time">4:00 PM</span>
+                <h3>Closing Remarks</h3>
+                <p>A thank you speech and final words to conclude the event.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- REGISTRATION SECTION -->
+<section id="registration" class="registration-section">
+    <h2>🎟️ Register Now!</h2>
+    <p>Don't miss out on this <b>pawsome</b> event! Secure your spot today and join the fun with your furry friends!</p>
+
+    <!-- Registration Steps (Card Format) -->
+    <div class="registration-steps">
+        <!-- Step 1 -->
+        <div class="step-card">
+            <img src="Visuals/Form.png" alt="Fill Out Form">
+            <div class="step-content">
+                <h3>📝 Step 1</h3>
+                <p>Fill out the <b>online registration form</b>.</p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <img src="Visuals/Email.png" alt="Receive Confirmation Email">
+            <div class="step-content">
+                <h3>📧 Step 2</h3>
+                <p>Receive a confirmation email with your <b>event pass</b>.</p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+            <img src="Visuals/Ticket-Icon.png" alt="Show Event Pass">
+            <div class="step-content">
+                <h3>🎟️ Step 3</h3>
+                <p>Show your <b>event pass</b> at the registration booth.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entry Fee -->
+    <div class="entry-fee">
+        <h3>Entry Fee?</h3><br>
+        <p>It's <b>FREE</b> for all attendees!</p>
+        <p><small><i>Donations for rescue shelters are welcome!</i>  ^-^</small></p>
+    </div>
+
+    <!-- Register Button -->
+    <a href="register.html" class="register-button">Register Here!</a>
+</section>
+
+
+
+    
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>2025 Paw Park. All rights reserved.</p>
+        <p><small><br><i>This website is a student project. While MOA Paw Park is a real location, the information provided here is fictional and for educational purposes only.</i></small></p>
+    </footer>
+    
+
+</body>
+</html>

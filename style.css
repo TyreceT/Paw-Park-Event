@@ -321,7 +321,7 @@ button:hover {
 
 /* FOOTER */
 footer {
-    background-color: #7dcbff;
+    background-color: #7dcbffc2;
     color: rgb(21, 104, 129);
     padding: 20px;
     margin-top: 20px;
@@ -468,7 +468,7 @@ footer {
 .speakers-section {
     text-align: center;
     padding: 60px 20px;
-    background: #f9f9f9a2;
+    background: #ffffffc9;
 }
 
 .speakers-section h2 {
@@ -576,7 +576,7 @@ footer {
 /* VENUE SECTION */
 .venue-section {
     padding: 60px 0px;
-    background: #f9f9f9a2;
+    background: #ffffffc9;
     text-align: center;
 }
 
@@ -883,7 +883,7 @@ input[type="radio"] {
 .schedule-section {
     text-align: center;
     padding: 60px 20px;
-    background: #f9f9f9a2;
+    background: #ffffffc9;
 }
 
 .schedule-section h2 {
@@ -987,7 +987,7 @@ input[type="radio"] {
 .registration-section {
     text-align: center;
     padding: 60px 20px;
-    background: #f9f9f9a2;
+    background: #ffffffc9;
 }
 
 .registration-section h2 {
@@ -1032,7 +1032,7 @@ input[type="radio"] {
 .step-card img {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit:contain;
 }
 
 /* Step Content */
@@ -1042,7 +1042,7 @@ input[type="radio"] {
 
 .step-content h3 {
     font-size: 1.5rem;
-    color: #d8cbbb;
+    color: #e77f00;
 }
 
 .step-content p {
@@ -1052,13 +1052,14 @@ input[type="radio"] {
 
 /* Entry Fee Box */
 .entry-fee {
-    background: #ffebcc;
+    background: #ffebcc98;
     padding: 15px;
     border-radius: 8px;
     margin-top: 30px;
 }
 
 .entry-fee h3 {
+    margin-top: 1%;
     color: #ff8c00;
 }
 
@@ -1070,11 +1071,22 @@ input[type="radio"] {
     padding: 12px 25px;
     font-size: 1.5rem;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 50px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
-    animation: bounce 1.5s infinite;
+    animation: bounce 1.5s infinite, glow 1.5s infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 217, 255, 0.445);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 217, 255, 0.342), 0 0 30px rgba(0, 217, 255, 0.336);
+    }
 }
 
 .register-button:hover {
