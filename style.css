@@ -35,6 +35,7 @@ body {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 /* HEADER */
@@ -349,7 +350,21 @@ footer {
     color: rgb(21, 104, 129);
     padding: 20px;
     margin-top: 20px;
+    text-align: center;
 }
+
+.social-icons a {
+    color: rgb(21, 104, 129);
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: rgb(1, 61, 58);
+}
+
+
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {

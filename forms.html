@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paw Park | Registration</title>
+    <link rel="icon" type="image/png" href="Visuals/Logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style>
+        html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100%;
+}
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #95dbe7b9;
+    color: rgb(0, 0, 0);
+    position: fixed; /* Makes navbar stick */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays above other content */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition for color */
+    border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+}
+
+.logo-container img {
+    width: 100px; /* Adjust size as needed */
+    margin-left: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-right: 40px;
+}
+
+nav a {
+    color: rgb(0, 143, 136);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effect - Underline */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(0, 97, 92);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: rgb(0, 97, 92);
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Hide checkbox */
+.nav-checkbox {
+    display: none;
+}
+
+/* Burger Menu Icon */
+.nav-burger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .nav-burger {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        user-select: none; /* Prevents text selection */
+    }
+
+    /* Hide default navigation */
+    nav {
+        position: absolute;
+        top: 73px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.76);
+        text-align: right;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: right;
+        padding-right: 3%;
+        justify-content: center;
+        border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+    }
+
+    /* Center menu items */
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        margin: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 15px 0;
+        font-size: 1rem;
+        color: black;
+        width: 100%;
+    }
+
+    /* Toggle Menu - Fix Height */
+    .nav-checkbox:checked + .nav-burger + nav {
+        height: 150px; /* Increased height */
+        border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+    }
+
+    .nav-checkbox:checked + .nav-burger + nav .nav-menu {
+        opacity: 1;
+    }
+}
+        /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("Visuals/Easter-Background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps it static while scrolling */
+    background-color: #f4f4f400;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+        .form-container {
+            margin-top: 7%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .form-box {
+            background: #ffffffc9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            
+            
+        }
+        input, button, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #fa833f;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #df7131;
+        }
+
+        .back-button {
+            width: 62%; /* Adjust the width as needed */
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: #ff9e65;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .ticket {
+            display: none;
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .radio-group label {
+            margin-right: 0;
+        }
+        .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns checkboxes and text to the left */
+    width: 90%; /* Ensures it takes full width */
+    padding-left: 0;
+    margin-left: 5%;
+    line-height: 30px;
+    
+
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Forces left alignment */
+    gap: 10px;
+    width: auto; /* Ensures text does not get squeezed */
+    text-align: left;
+    margin-bottom: 2%;
+    margin-left: 1%;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin: 0;
+    flex-shrink: 0; /* Prevents checkbox from resizing */
+    width: 16px; /* Standard checkbox size */
+    height: 16px;
+    margin-right: 2%;
+}
+
+
+
+
+
+
+        .new-submission {
+            margin-top: 10px;
+            background-color: #ff4d4d;
+        }
+        .new-submission:hover {
+            background-color: #cc0000;
+        }
+/* FOOTER */
+footer {
+    background-color: #7dcbffc2;
+    color: rgb(21, 104, 129);
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-icons a {
+    color: rgb(21, 104, 129);
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: rgb(1, 61, 58);
+}
+    </style>
+</head>
+<body>
+    <!-- HEADER - NAVIGATION BAR -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html" onclick="resetPage()">
+                <img src="Visuals/Logo.png" alt="Paw Park Logo">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu Toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-checkbox">
+        <label for="nav-toggle" class="nav-burger">&#9776;</label>
+
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">RETURN TO HOME</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form id="registrationForm">
+        <div class="form-container">
+            <div class="form-box">
+                <h2>😄 Fur Parent</h2>
+                <input type="text" id="parentName" placeholder="Full Name" required>
+                <input type="number" id="parentAge" placeholder="Age" required>
+                <input type="text" id="city" placeholder="Residing City" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="tel" id="contactNumber" placeholder="Contact Number" required>
+            </div>
+            <div class="form-box">
+                <h2>🐶 Fur Baby</h2>
+                <input type="text" id="dogName" placeholder="Fur Baby Name" required>
+                <input type="number" id="dogAge" placeholder="Age" required>
+                <input type="text" id="breed" placeholder="Breed" required>
+                
+                <h4>Breed Size</h4>
+                <div class="radio-group">
+                    <label><input type="radio" name="breedSize" value="Small" required> Small</label>
+                    <label><input type="radio" name="breedSize" value="Medium"> Medium</label>
+                    <label><input type="radio" name="breedSize" value="Large"> Large</label>
+                </div><br>
+                
+                <h4>Vaccine Status</h4>
+                <div class="radio-group">
+                    <label><input type="radio" name="vaccine" value="Fully Vaccinated" required> Fully Vaccinated</label>
+                    <label><input type="radio" name="vaccine" value="Partially Vaccinated"> Partially Vaccinated</label>
+                    <label><input type="radio" name="vaccine" value="Not Vaccinated"> Not Vaccinated</label>
+                </div>
+            </div>
+            <div class="form-box">
+                <h2>Consent & Agreement</h2>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="consent1" required> I grant permission for Paw Park: Bark & Hunt organizers to capture and use photographs/videos of my pet and me for event promotions, social media, and marketing materials.</label>
+                    <label><input type="checkbox" id="consent2" required> I acknowledge that I am responsible for my pet’s behavior and well-being throughout the event. I release the event organizers, venue, and sponsors from any liability for incidents involving my pet.</label>
+                    <label><input type="checkbox" id="consent3" required> I have read and agree to abide by the event rules, including pet safety guidelines, vaccination requirements, and responsible pet ownership practices during the event.</label><br>
+                </div>
+                <button type="submit">Register</button>
+            </div>
+        </div>
+    </form>
+    
+    <div class="ticket" id="eventTicket">
+        <h2>🎟️ Event Ticket</h2>
+        <img src="Visuals/Ticket.png" alt="Event Ticket" width="1000">
+        <p><strong>Fur Parent:</strong> <span id="ticketParent"></span></p>
+        <p><strong>Fur Baby:</strong> <span id="ticketDog"></span></p>
+        <p><strong>Email:</strong> <span id="ticketEmail"></span></p><br>
+        <p>📅 <strong>Sunday, April 20, 2025</strong></p>
+        <p>📍 <strong>SM Mall of Asia, Level 4 – MOA Sky</strong></p>
+        <p>🐾 See you there! 🐶</p>
+        <button class="new-submission" onclick="resetForm()">New Submission</button>
+    </div>
+    
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let parentName = document.getElementById('parentName').value;
+            let email = document.getElementById('email').value; 
+            let dogName = document.getElementById('dogName').value;
+            
+            document.getElementById('ticketParent').textContent = parentName;
+            document.getElementById('ticketEmail').textContent = email;
+            document.getElementById('ticketDog').textContent = dogName;
+            
+            document.getElementById('eventTicket').style.display = 'block';
+        });
+
+        function resetForm() {
+            document.getElementById('registrationForm').reset();
+            document.getElementById('eventTicket').style.display = 'none';
+        }
+    </script>
+
+<footer class="text-center bg-light py-4">
+    <p>&copy; 2025 Paw Park. All rights reserved.</p>
+
+    <p>
+        <small>
+            <i>This website is a student project. While MOA Paw Park is a real location, the information provided here is fictional and for educational purposes only.</i>
+        </small>
+    </p>
+
+    <br>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tyrece.tan/" target="_blank" class="me-3">
+            <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/whaynetyrece/" target="_blank" class="me-3">
+            <i class="bi bi-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/whayne-tyrece-tan-3253a9266/" target="_blank">
+            <i class="bi bi-linkedin"></i>
+        </a>
+    </div>
+</footer>
+</body>
+</html>
